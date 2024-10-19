@@ -1,0 +1,12 @@
+services:
+  satisfactory-server:
+    image: !reset null
+    build: .
+    volumes: !override
+      - './satisfactory-config:/config'
+    deploy:
+      resources:
+        limits:
+          memory: 16G
+        reservations:
+          memory: 8G
