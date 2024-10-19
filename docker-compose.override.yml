@@ -10,3 +10,14 @@ services:
           memory: 16G
         reservations:
           memory: 8G
+
+  rclone:
+    container_name: rclone
+    hostname: rclone
+    image: rclone/rclone:latest
+    restart: unless-stopped
+    volumes:
+      - './rclone-config:/config'
+      - './satisfactory-config:/data:ro'
+    entrypoint: sh
+    command: -c "while true; do rclone sync /data/saved onedrive:satisfactory-backup/current --backup-dir onedrive:satisfactory-backup/archive -v; sleep 1h; done"
