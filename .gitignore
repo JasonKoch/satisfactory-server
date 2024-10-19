@@ -1,0 +1,3 @@
+# ignore docker data volumes
+satisfactory-config/
+rclone-config/
